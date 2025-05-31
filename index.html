@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satya Siba Nayak - Links</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5; /* Light grey background */
+            --card-bg-color: #ffffff;
+            --text-color: #1c1e21;
+            --subtle-text-color: #606770;
+            --accent-color: #007bff; /* A nice blue, similar to some elements in image */
+            --border-radius-lg: 16px;
+            --border-radius-md: 12px;
+            --border-radius-sm: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+        }
+
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 900px; /* Adjust as needed */
+        }
+
+        .bento-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* For image fitting */
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Profile Card */
+        .profile-card {
+            grid-column: span 2; /* Example: make it wider */
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+        .profile-info h1 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+        }
+        .profile-info p {
+            margin: 0;
+            color: var(--subtle-text-color);
+            font-size: 0.9em;
+        }
+
+        /* General Link Card Styling */
+        .link-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .link-card-icon { /* Placeholder for actual icons */
+            width: 24px;
+            height: 24px;
+            font-size: 1.2em; /* If using text/emoji icons */
+            /* background-color: #eee; border-radius: 50%; display:flex; align-items:center; justify-content:center; */
+        }
+        .link-card-title {
+            font-weight: 600;
+        }
+        .link-card-username {
+            font-size: 0.85em;
+            color: var(--subtle-text-color);
+            margin-bottom: auto; /* Pushes button down if content is sparse */
+        }
+        .link-card-button {
+            background-color: #e9ecef; /* Light grey button */
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9em;
+            margin-top: 15px;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .link-card-button:hover {
+            background-color: #dee2e6; /* Slightly darker on hover */
+        }
+        .link-card-button.subscribe { /* YouTube specific */
+            background-color: #c9302c; /* Red */
+            color: white;
+        }
+         .link-card-button.subscribe:hover {
+            background-color: #a52723;
+        }
+
+
+        /* Specific Card Spans (Customize these based on your preference) */
+        .card-github { grid-column: span 1; /* Or span 2 if you want it wider */ }
+        .card-linkedin { grid-column: span 2; display: flex; flex-direction: row; align-items: center; gap: 15px;}
+        .card-linkedin img { width: 60px; height: 60px; border-radius: var(--border-radius-sm); object-fit: cover;}
+        .card-map { grid-column: span 2; grid-row: span 2; background-color: #e0e0e0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+        .card-map .map-placeholder-text { font-size: 1.2em; font-weight: bold; margin-bottom:5px; }
+        .card-map .map-location-text { font-size: 0.9em; color: var(--subtle-text-color); }
+        /* Use an actual map image for better effect:
+        .card-map { background-image: url('your-map-image.png'); background-size:cover; background-position:center; } */
+
+        .card-website { grid-column: span 1; }
+        .card-gh-activity { grid-column: span 2; text-align: center; } /* Placeholder for GitHub Activity */
+        .card-gh-activity .activity-placeholder { font-size:0.9em; color:var(--subtle-text-color); padding:20px; border:1px dashed #ccc; border-radius:var(--border-radius-md); margin-top:10px;}
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .bento-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Smaller min for cards */
+                gap: 12px;
+            }
+            .profile-card {
+                grid-column: span 2; /* Full width on smaller screens */
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .bento-card {
+                padding: 15px;
+            }
+            .card-linkedin { grid-column: span 2; flex-direction: column; text-align:center;}
+            .card-map { grid-column: span 2; grid-row: span 1; /* Make map smaller on mobile */ }
+            .card-gh-activity { grid-column: span 2; }
+        }
+        @media (max-width: 480px) {
+             .bento-container {
+                grid-template-columns: 1fr; /* Single column */
+            }
+            /* Make all cards full width in single column */
+            .profile-card, .card-github, .card-linkedin, .card-map, .card-website, .card-gh-activity {
+                grid-column: span 1 !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bento-container">
+        <div class="bento-card profile-card">
+            <img src="https://creatorspace.imgix.net/users/clepwoqpq004yto0yaw9fzmmf/E1j1bkjwyFwE6UuW-20230420_203629.jpg?w=300&h=300" alt="Satya Siba Nayak" class="profile-pic">
+            <div class="profile-info">
+                <h1>Satya siba Nayak</h1>
+                <p>18 • Computer Science Student</p>
+                <p>Pune, India</p>
+            </div>
+        </div>
+
+        <a href="https://twitter.com/satyasibanayak" target="_blank" class="bento-card card-twitter">
+            <div class="link-card-header">
+                <span class="link-card-icon">🐦</span>
+                <span class="link-card-title">Twitter</span>
+            </div>
+            <p class="link-card-username">@satyasibanayak</p>
+            <span class="link-card-button">Follow</span>
+        </a>
+
+        <a href="#" target="_blank" class="bento-card card-instagram"> <div class="link-card-header">
+                 <span class="link-card-icon">📸</span>
+                <span class="link-card-title">Instagram</span>
+            </div>
+            <p class="link-card-username">@satya.eth</p> <span class="link-card-button">Follow</span>
+        </a>
+
+        <a href="https://github.com/Satya-Siba-Nayak" target="_blank" class="bento-card card-github">
+            <div class="link-card-header">
+                 <span class="link-card-icon">💻</span>
+                <span class="link-card-title">GitHub</span>
+            </div>
+            <p class="link-card-username">Satya-Siba-Nayak</p>
+            <span class="link-card-button">Follow</span>
+        </a>
+
+        <a href="#" target="_blank" class="bento-card card-linkedin"> <img src="https://media.licdn.com/dms/image/v2/D4D03AQFdVFuocStCYA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724529407086?e=1753920000&v=beta&t=10totvi1RPRRNF8Tj2AGFYNXgDsUiIZf7QFS-2oFRH4" alt="LinkedIn Profile">
+            <div>
+                <div class="link-card-header" style="margin-bottom:5px;">
+                    <span class="link-card-icon">🔗</span>
+                    <span class="link-card-title">LinkedIn</span>
+                </div>
+                <p class="link-card-username" style="margin-bottom:10px;">Connect with me professionally.</p>
+                <span class="link-card-button" style="font-size:0.8em; padding:6px 10px;">View Profile</span>
+            </div>
+        </a>
+
+        <a href="#" target="_blank" class="bento-card card-youtube"> <div class="link-card-header">
+                 <span class="link-card-icon">📺</span>
+                <span class="link-card-title">YouTube</span>
+            </div>
+            <p class="link-card-username">Satya siba Nayak</p> <span class="link-card-button subscribe">Subscribe</span>
+        </a>
+
+        <a href="#" target="_blank" class="bento-card card-bluesky"> <div class="link-card-header">
+                 <span class="link-card-icon">🦋</span>
+                <span class="link-card-title">Bluesky</span>
+            </div>
+            <p class="link-card-username">bsky.app</p> <span class="link-card-button">Follow</span>
+        </a>
+
+        <div class="bento-card card-map">
+            <span class="map-placeholder-text">📍 Pune, India</span>
+            <span class="map-location-text">Currently Exploring</span>
+        </div>
+
+        <a href="http://satya-nayak.me" target="_blank" class="bento-card card-website"> <div class="link-card-header">
+                 <span class="link-card-icon">🌐</span>
+                <span class="link-card-title">My Website</span>
+            </div>
+            <p class="link-card-username">satya-nayak.me</p> <span class="link-card-button">Visit</span>
+        </a>
+
+        <div class="bento-card card-gh-activity">
+            <div class="link-card-header">
+                <span class="link-card-icon">📊</span>
+                <span class="link-card-title">GitHub Activity</span>
+            </div>
+            <div class="activity-placeholder">
+                Contribution graph here. <br> (This is a static placeholder. For a live graph, you'd typically use an iframe or JavaScript.)
+                </div>
+        </div>
+
+        <a href="https://anilist.co" target="_blank" class="bento-card card-anilist"> <div class="link-card-header">
+                 <span class="link-card-icon">🎬</span>
+                <span class="link-card-title">AniList</span>
+            </div>
+            <p class="link-card-username">My Watchlist</p>
+            <span class="link-card-button">Explore</span>
+        </a>
+
+         <a href="#" target="_blank" class="bento-card card-playground">
+             <div class="link-card-header">
+                 <span class="link-card-icon">🎮</span>
+                <span class="link-card-title">Playground</span>
+            </div>
+            <p class="link-card-username">Experiments & Fun</p>
+            <span class="link-card-button">Discover</span>
+        </a>
+
+    </div>
+</body>
+</html>
